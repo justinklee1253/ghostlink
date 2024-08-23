@@ -1,0 +1,9 @@
+axios
+Flask
+opencv-python
+pytesseract
+transformers
+Flask-CORS 
+Flask-RESTful
+flask
+flask_cors
