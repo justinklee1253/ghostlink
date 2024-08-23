@@ -1,6 +1,6 @@
-# GhostLink - File Upload Application
+# GhostLink
 
-GhostLink is a full-stack application built with Next.js (TypeScript) on the frontend and Flask on the backend. The app allows users to upload files, which are then processed and displayed with details such as file name, size, and type.
+GhostLink is a full-stack application built with Next.js (TypeScript) on the frontend and Flask on the backend.
 
 ## Tech Stack
 
