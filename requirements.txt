@@ -7,3 +7,5 @@ Flask-CORS
 Flask-RESTful
 flask
 flask_cors
+moviepy
+SpeechRecognition
