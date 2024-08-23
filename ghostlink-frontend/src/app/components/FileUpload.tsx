@@ -74,18 +74,25 @@ const FileUpload: React.FC = () => {
           Upload
         </Button>
       </Box>
-      {uploadProgress > 0 && (
-        <Box mb={2}>
+      {(uploadProgress > 0 || isProcessing) && (
+        <Box mb={2} width="50%" mx="auto">
           <LinearProgress
             variant="determinate"
             value={uploadProgress}
             style={{
               backgroundColor: '#90caf9', // Blue background when not complete
-              color: '#4caf50',            // Green progress bar
+              color: uploadProgress === 100 ? '#4caf50' : '#90caf9', // Green progress bar if complete
+            }}
+            sx={{
+              '& .MuiLinearProgress-bar': {
+                backgroundColor: uploadProgress === 100 ? '#4caf50' : '#90caf9', // Change the bar color
+              },
             }}
           />
           <Typography variant="body1" style={{ marginTop: '10px' }}>
-            {uploadProgress < 100 ? `Processing video... (${uploadProgress}%)` : 'Processing complete!'}
+            {fileDetails && fileDetails.transcript 
+              ? 'Processing complete!' 
+              : 'Processing video...'}
           </Typography>
         </Box>
       )}
