@@ -11,3 +11,5 @@ moviepy
 SpeechRecognition
 google-cloud-storage 
 google-cloud-videointelligence
+python-dotenv
+openai

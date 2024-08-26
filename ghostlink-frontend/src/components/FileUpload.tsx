@@ -8,6 +8,7 @@ const FileUpload: React.FC = () => {
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [fileDetails, setFileDetails] = useState<{ name: string; size: number; type: string; linkedin_post?: string } | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -20,6 +21,7 @@ const FileUpload: React.FC = () => {
 
     setIsProcessing(true);  // Set processing state to true
     setUploadProgress(0);   // Reset progress to 0
+    setErrorMessage(null);  // Reset any previous error messages
 
     const formData = new FormData();
     formData.append('file', selectedFile);
@@ -39,13 +41,17 @@ const FileUpload: React.FC = () => {
         name: response.data.file_name,
         size: response.data.file_size,
         type: response.data.file_type,
-        linkedin_post: response.data.linkedin_post,  // Updated to capture LinkedIn post content
+        linkedin_post: response.data.linkedin_post,
       });
 
-      setIsProcessing(false);  // Set processing state to false after completion
+      setSelectedFile(null);  // Reset file selection
+      setUploadProgress(0);   // Reset progress for next upload
+
     } catch (error) {
       console.error('Error uploading file:', error);
-      setIsProcessing(false);  // Set processing state to false in case of error
+      setErrorMessage('Failed to upload file. Please try again.');
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -60,7 +66,7 @@ const FileUpload: React.FC = () => {
           onChange={handleFileChange}
         />
         <label htmlFor="raised-button-file">
-          <Button variant="contained" color="primary" component="span">
+          <Button variant="contained" color="primary" component="span" disabled={isProcessing}>
             Choose File
           </Button>
         </label>
@@ -69,7 +75,7 @@ const FileUpload: React.FC = () => {
           color="secondary"
           onClick={handleFileUpload}
           disabled={!selectedFile || isProcessing}
-          style={{ marginLeft: '10px' }}
+          sx={{ ml: 2 }}
         >
           Upload
         </Button>
@@ -79,10 +85,6 @@ const FileUpload: React.FC = () => {
           <LinearProgress
             variant="determinate"
             value={uploadProgress}
-            style={{
-              backgroundColor: '#90caf9', // Blue background when not complete
-              color: uploadProgress === 100 ? '#4caf50' : '#90caf9', // Green progress bar if complete
-            }}
             sx={{
               '& .MuiLinearProgress-bar': {
                 backgroundColor: uploadProgress === 100 ? '#4caf50' : '#90caf9', // Change the bar color
@@ -95,6 +97,11 @@ const FileUpload: React.FC = () => {
               : 'Processing video...'}
           </Typography>
         </Box>
+      )}
+      {errorMessage && (
+        <Typography variant="body1" color="error" style={{ marginTop: '10px' }}>
+          {errorMessage}
+        </Typography>
       )}
       {fileDetails && (
         <div style={{ marginTop: '20px' }}>
