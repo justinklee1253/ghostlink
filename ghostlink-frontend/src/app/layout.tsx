@@ -2,7 +2,7 @@
 //global layout for entire app that applies to all pages within its directory
 
 import { ReactNode } from 'react';
-import './styles/globals.css';  // Adjust the path if needed
+import '../styles/globals.css';
 
 export const metadata = {
   title: 'GhostLink',

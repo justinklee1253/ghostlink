@@ -7,7 +7,7 @@ const FileUpload: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
-  const [fileDetails, setFileDetails] = useState<{ name: string; size: number; type: string; transcript?: string } | null>(null);
+  const [fileDetails, setFileDetails] = useState<{ name: string; size: number; type: string; linkedin_post?: string } | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -39,7 +39,7 @@ const FileUpload: React.FC = () => {
         name: response.data.file_name,
         size: response.data.file_size,
         type: response.data.file_type,
-        transcript: response.data.transcript,
+        linkedin_post: response.data.linkedin_post,  // Updated to capture LinkedIn post content
       });
 
       setIsProcessing(false);  // Set processing state to false after completion
@@ -90,7 +90,7 @@ const FileUpload: React.FC = () => {
             }}
           />
           <Typography variant="body1" style={{ marginTop: '10px' }}>
-            {fileDetails && fileDetails.transcript 
+            {fileDetails && fileDetails.linkedin_post 
               ? 'Processing complete!' 
               : 'Processing video...'}
           </Typography>
@@ -102,10 +102,10 @@ const FileUpload: React.FC = () => {
           <Typography><strong>Name:</strong> {fileDetails.name}</Typography>
           <Typography><strong>Size:</strong> {(fileDetails.size / 1024).toFixed(2)} KB</Typography>
           <Typography><strong>Type:</strong> {fileDetails.type}</Typography>
-          {fileDetails.transcript && (
+          {fileDetails.linkedin_post && (
             <div style={{ marginTop: '20px' }}>
-              <Typography variant="h6">Transcript:</Typography>
-              <Typography>{fileDetails.transcript}</Typography>
+              <Typography variant="h6">LinkedIn Post:</Typography>
+              <Typography>{fileDetails.linkedin_post}</Typography> {/* Display the LinkedIn post */}
             </div>
           )}
         </div>
