@@ -13,7 +13,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
-bucket_name = 'ghostlink_bucket'
+bucket_name = 'ghostlink_bucket_test'
 storage_client = storage.Client(project='ghostlink')
 
 def upload_to_gcs(file_path, bucket_name):
