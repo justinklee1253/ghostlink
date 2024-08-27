@@ -3,26 +3,34 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0; /* Black text */
-  --background-start-rgb: 255, 255, 255; /* White background start */
-  --background-end-rgb: 255, 255, 255; /* White background end to ensure a solid white background */
+  --foreground-rgb: 0, 0, 0; /* Default text color: black */
+  --background-start-rgb: 255, 255, 255; /* Default background: white */
+  --background-end-rgb: 255, 255, 255; /* Default background: white */
 }
 
-/* .smooth-scroll {
-  scroll-behavior: smooth;
-} */
-
-/* Firefox */
 @media (prefers-color-scheme: dark) {
   :root {
-    color-scheme: light;
+    --foreground-rgb: 255, 255, 255; /* Text color: white */
+    --background-start-rgb: 0, 0, 0; /* Background color start: black */
+    --background-end-rgb: 0, 0, 0; /* Background color end: black */
   }
 }
 
-/* Chrome */
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground-rgb: 0, 0, 0; /* Text color: black */
+    --background-start-rgb: 255, 255, 255; /* Background color start: white */
+    --background-end-rgb: 255, 255, 255; /* Background color end: white */
+  }
+}
+
+/* Forced Colors (High Contrast Mode) */
 @media (forced-colors: active) {
   :root {
     color-scheme: light;
+    --foreground-rgb: 0, 0, 0; /* Text color: black */
+    --background-start-rgb: 255, 255, 255; /* Background color start: white */
+    --background-end-rgb: 255, 255, 255; /* Background color end: white */
   }
 }
 
@@ -35,11 +43,6 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
-/* body {
-  background-color: black;
-  color: white;
-} */
 
 html {
   scroll-behavior: smooth;
