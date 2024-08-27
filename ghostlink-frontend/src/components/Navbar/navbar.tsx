@@ -7,7 +7,11 @@ const Navbar = () => {
     <div className="navbar fixed bg-customNavbar w-[95vw] flex items-center justify-center rounded-full top-8 p-3 left-1/2 transform -translate-x-1/2">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost btn-circle text-black"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -40,10 +44,10 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl">ghostLink</a>
+        <a className="btn btn-ghost text-xl text-black">ghostLink</a>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-ghost btn-circle">
+        <button className="btn btn-ghost btn-circle text-black">
           <div className="indicator">
             <svg
               xmlns="http://www.w3.org/2000/svg"
