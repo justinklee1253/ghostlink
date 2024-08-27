@@ -36,6 +36,12 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+body {
+  /* @apply bg-black text-white; */
+  background-color: black;
+  color: white;
+}
+
 html {
   scroll-behavior: smooth;
 }
