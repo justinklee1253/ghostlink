@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <div className="navbar sticky bg-customNavbar">
+    <div className="navbar fixed bg-customNavbar w-[95vw] flex items-center justify-center rounded-full top-8 p-3 left-1/2 transform -translate-x-1/2">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
