@@ -1,3 +1,4 @@
+
 import FileUpload from '../components/FileUpload';
 import Header from '../components/Header';
 
@@ -12,6 +13,7 @@ export default function Home() {
           
           <FileUpload />
         </div>
+
       </div>
     </div>
   );
