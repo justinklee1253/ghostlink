@@ -4,13 +4,14 @@ from flask import Flask, request, jsonify
 from google.cloud import storage, videointelligence_v1 as videointelligence
 from openai import OpenAI
 
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 
 
 # Load environment variables from .env file
 load_dotenv()
+
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}}) 
@@ -66,6 +67,8 @@ def transcribe_video(video_uri):
     return transcription.strip()
 
 def generate_linkedin_post(transcription_text):
+    print("\n\nThe transcription text is: ", transcription_text)
+
     """Generates a LinkedIn post using the latest OpenAI API."""
     prompt = (
         f"Given the following transcription from a video: '{transcription_text}', "
