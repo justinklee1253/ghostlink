@@ -53,3 +53,12 @@ html {
     text-wrap: balance;
   }
 }
+
+@keyframes loading {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+.animate-loading {
+  animation: loading 6s linear forwards;
+}
