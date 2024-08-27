@@ -8,6 +8,13 @@ import Navbar from "@/components/Navbar/navbar";
 export const metadata = {
   title: "GhostLink",
   description: "Upload and manage your files.",
+  icons: [
+    {
+      rel: "icon",
+      url: "/sampleLogo2.jpg",
+      sizes: "16x16", // Specify the size
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
