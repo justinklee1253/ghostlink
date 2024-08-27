@@ -1,6 +1,13 @@
-import FileUpload from "@/components/FileUpload/FileUpload";
+"use client";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleFileUpload = () => {
+    router.push("/uploadFile");
+  };
+
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col items-center justify-center min-h-screen w-[40vw]">
@@ -12,7 +19,9 @@ export default function Home() {
           you create impactful LinkedIn posts that drive high engagement.
         </p>
         <div className="w-full flex justify-center">
-          <FileUpload />
+          <button className="btn btn-primary" onClick={handleFileUpload}>
+            Get Started
+          </button>
         </div>
       </div>
     </div>

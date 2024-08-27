@@ -3,9 +3,9 @@ from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 from google.cloud import storage, videointelligence_v1 as videointelligence
 from openai import OpenAI
-
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
+from routes.transcribeVideo import transcribe_bp
 
 
 # Load environment variables from .env file
@@ -17,6 +17,9 @@ app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}}) 
 UPLOAD_FOLDER = 'uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+#register the blueprints
+app.register_blueprint(transcribe_bp, url_prefix='/api')
 
 
 # Retrieve API keys from environment variables
@@ -152,4 +155,4 @@ def upload_file():
             os.remove(file_path)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8000)
+    app.run(debug=True, port=4000)
