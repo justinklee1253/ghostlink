@@ -12,7 +12,7 @@ export default function Home() {
     <div className="flex flex-col items-center">
       <div className="flex flex-col items-center justify-center min-h-screen w-[40vw]">
         <h1 className="text-center text-5xl font-bold mb-8">
-          Welcome to GhostWriter
+          Welcome to GhostLink
         </h1>
         <p className="text-center text-lg mb-8">
           An all-in-one platform that makes video transcription simple and helps
