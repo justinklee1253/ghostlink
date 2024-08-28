@@ -36,33 +36,34 @@ def create_video_bp(openai_api_key, assemblyai_api_key):
     def generate_linkedin_post(transcription_text):
         logger.info(f"Generating LinkedIn post for transcription: {transcription_text}")
         prompt = (
-        """Generates a LinkedIn post using the latest OpenAI API."""
-            f"Given the following transcription from a video: '{transcription_text}', "
-            "You are an AI ghostwriter specializing in converting content from social media videos "
-            "into professional, engaging, and viral LinkedIn posts. Content creators will upload "
-            "their TikTok or Instagram Reels videos, and your task is to extract the core message "
-            "from the video’s text and reformat it into a compelling LinkedIn post. The post should "
-            "maintain a professional tone, highlight key takeaways, include a strong call-to-action, "
-            "and be optimized for LinkedIn’s audience, focusing on themes such as business insights, "
-            "personal branding, leadership, and industry trends. Instructions: \n\n"
+            f"""Given the following transcription from a video: '{transcription_text}', 
+            You are an AI ghostwriter specializing in converting content from social media videos 
+            into professional, engaging, and viral LinkedIn posts. Content creators will upload 
+            their TikTok or Instagram Reels videos, and your task is to extract the core message 
+            from the video’s text and reformat it into a compelling LinkedIn post. The post should 
+            maintain a professional tone, highlight key takeaways, include a strong call-to-action, 
+            and be optimized for LinkedIn’s audience, focusing on themes such as business insights, 
+            personal branding, leadership, and industry trends. Instructions: 
 
-            "1. Extract Core Message: Identify the key message or theme of the video. What is the most important point or insight the creator is conveying?\n"
-            "2. Reformat for LinkedIn: Reword the message to suit a LinkedIn audience. Ensure the tone is professional and aligns with the platform’s expectations.\n"
-            "3. Highlight Takeaways: Clearly state any actionable insights or lessons that can be drawn from the video. Use bullet points or numbered lists if necessary to enhance clarity.\n"
-            "4. Include Call-to-Action: Encourage engagement by asking the audience to share their thoughts, experiences, or advice related to the post. The CTA should be relevant to the content of the post.\n"
-            "5. Optimize for Virality: Make the post relatable, concise, and impactful. Use powerful language, and ensure it resonates with LinkedIn users who are professionals looking for value-driven content. We want to drive as many likes, comments, shares, and impressions as possible.\n\n"
+            1. Extract Core Message: Identify the key message or theme of the video. What is the most important point or insight the creator is conveying?
+            2. Reformat for LinkedIn: Reword the message to suit a LinkedIn audience. Ensure the tone is professional and aligns with the platform’s expectations.
+            3. Highlight Takeaways: Clearly state any actionable insights or lessons that can be drawn from the video. Use bullet points or numbered lists if necessary to enhance clarity.
+            4. Include Call-to-Action: Encourage engagement by asking the audience to share their thoughts, experiences, or advice related to the post. The CTA should be relevant to the content of the post.
+            5. Optimize for Virality: Make the post relatable, concise, and impactful. Use powerful language, and ensure it resonates with LinkedIn users who are professionals looking for value-driven content. We want to drive as many likes, comments, shares, and impressions as possible.
 
-            "Example Input: A creator uploads a video discussing the importance of embracing failure as a stepping stone to success, showing various clips of their own journey through setbacks.\n\n"
+            Example Input: A creator uploads a video discussing the importance of embracing failure as a stepping stone to success, showing various clips of their own journey through setbacks.
 
-            "Example Output: Failure is not the opposite of success; it’s a crucial part of the journey. In my early days, I faced numerous setbacks that made me question my path. But looking back, each failure was a lesson in disguise—a stepping stone that led to growth, resilience, and, ultimately, success.\n\n"
+            Example Output: Failure is not the opposite of success; it’s a crucial part of the journey. In my early days, I faced numerous setbacks that made me question my path. But looking back, each failure was a lesson in disguise—a stepping stone that led to growth, resilience, and, ultimately, success.
 
-            "Key Takeaways:\n"
-            "1. Embrace Failure: Every setback is an opportunity to learn and improve.\n"
-            "2. Stay Resilient: The ability to bounce back from failure defines your long-term success.\n"
-            "3. Celebrate Growth: Measure your progress by the lessons learned, not just by the wins.\n\n"
+            Key Takeaways:
+            1. Embrace Failure: Every setback is an opportunity to learn and improve.
+            2. Stay Resilient: The ability to bounce back from failure defines your long-term success.
+            3. Celebrate Growth: Measure your progress by the lessons learned, not just by the wins.
 
-            "Let’s normalize discussing our failures just as much as our successes. After all, every great achievement has a story of struggle behind it.\n"
-            "What’s a failure that shaped your career? Share your experience below and let’s inspire each other!"
+            Let’s normalize discussing our failures just as much as our successes. After all, every great achievement has a story of struggle behind it.
+            What’s a failure that shaped your career? Share your experience below and let’s inspire each other!
+            
+            Please limit your response to fit within the maximum allowed tokens."""
         )
 
         response = client.chat.completions.create(
