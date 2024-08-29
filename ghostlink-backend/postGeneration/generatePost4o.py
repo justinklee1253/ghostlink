@@ -65,7 +65,7 @@ def generate_linkedin_post_4o(transcription_text):
             {"role": "system", "content": "You are an AI ghostwriter specializing in converting content from social media videos into LinkedIn posts."},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=800,
+        max_tokens=650,
         temperature=0.17
     )
 
