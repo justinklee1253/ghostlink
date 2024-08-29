@@ -18,9 +18,7 @@ const config: Config = {
         customFooter: "#f5f5f7",
         customButton: "#d8e2dc",
       },
-      sizes: {
-        
-      }
+      sizes: {},
     },
   },
   plugins: [require("daisyui")],
@@ -29,9 +27,9 @@ const config: Config = {
       {
         mytheme: {
           primary: "#8338ec",
-        }
-      }
-    ]
-  }
+        },
+      },
+    ],
+  },
 };
 export default config;
