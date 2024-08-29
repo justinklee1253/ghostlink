@@ -4,6 +4,7 @@
 import { ReactNode } from "react";
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar/navbar";
+import Footer from "@/components/Footer/footer";
 
 export const metadata = {
   title: "GhostLink",
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

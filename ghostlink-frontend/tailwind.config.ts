@@ -14,8 +14,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-
-        customNavbar: "#d8e2dc",
+        customNavbar: "rgba(255,255,255,0.2)",
         customButton: "#d8e2dc",
       },
       sizes: {
@@ -24,5 +23,14 @@ const config: Config = {
     },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          primary: "#8338ec",
+        }
+      }
+    ]
+  }
 };
 export default config;
