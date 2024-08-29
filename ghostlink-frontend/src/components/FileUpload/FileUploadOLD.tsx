@@ -42,11 +42,11 @@ const FileUploadOLD: React.FC = () => {
           },
           onUploadProgress: (progressEvent) => {
             const percentCompleted = Math.round(
-              (progressEvent.loaded * 100) / (progressEvent.total || 1)
+              (progressEvent.loaded * 100) / (progressEvent.total || 1),
             );
             setUploadProgress(percentCompleted);
           },
-        }
+        },
       );
 
       setFileDetails({

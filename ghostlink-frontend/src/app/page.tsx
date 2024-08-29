@@ -10,21 +10,19 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex flex-col items-center justify-center min-h-screen w-[40vw]">
-        <h1 className="text-center text-5xl font-bold mb-8 text-white font-medium">
+      <div className="flex min-h-screen w-[40vw] flex-col items-center justify-center">
+        <h1 className="mb-8 text-center text-5xl font-bold font-medium text-white">
           Welcome to GhostLink
         </h1>
-        <p className="text-center text-lg mb-8 text-white font-extralight">
+        <p className="mb-8 text-center text-lg font-extralight text-white">
           An all-in-one platform that makes video transcription simple and helps
           you create impactful LinkedIn posts that drive high engagement.
         </p>
-        <div className="w-full flex justify-center gap-[1vw]">
+        <div className="flex w-full justify-center gap-[1vw]">
           <button className="btn btn-primary" onClick={handleFileUpload}>
             Get Started
           </button>
-          <button className="btn ghost text-white border-0">
-            Learn More
-          </button>
+          <button className="ghost btn border-0 text-white">Learn More</button>
         </div>
       </div>
     </div>

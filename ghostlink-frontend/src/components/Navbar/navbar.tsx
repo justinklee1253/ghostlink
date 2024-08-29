@@ -4,15 +4,15 @@ import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <div className="navbar fixed bg-customNavbar backdrop-blur-md w-[60vw] flex items-center justify-center rounded-full top-8 p-3 left-1/2 transform -translate-x-1/2">
+    <div className="navbar fixed left-1/2 top-8 flex w-[60vw] -translate-x-1/2 transform items-center justify-center rounded-full bg-customNavbar p-3 backdrop-blur-md">
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl text-white font-medium">GhostLink</a>
+        <a className="btn btn-ghost text-xl font-medium text-white">
+          GhostLink
+        </a>
       </div>
-      <div className="navbar-start">
-        
-      </div>
+      <div className="navbar-start"></div>
       <div className="navbar-end">
-        <button className="btn btn-ghost btn-circle text-black">
+        <button className="btn btn-circle btn-ghost text-black">
           <div className="indicator">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -28,14 +28,14 @@ const Navbar = () => {
                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
               />
             </svg>
-            <span className="badge badge-xs badge-primary indicator-item"></span>
+            <span className="badge indicator-item badge-primary badge-xs"></span>
           </div>
         </button>
         <div className="dropdown">
           <div
             tabIndex={0}
             role="button"
-            className="btn btn-ghost btn-circle text-black"
+            className="btn btn-circle btn-ghost text-black"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
           >
             <li>
               <a href="/">Get Started</a>

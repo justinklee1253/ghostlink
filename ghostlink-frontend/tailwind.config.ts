@@ -17,9 +17,7 @@ const config: Config = {
         customNavbar: "rgba(255,255,255,0.2)",
         customButton: "#d8e2dc",
       },
-      sizes: {
-        
-      }
+      sizes: {},
     },
   },
   plugins: [require("daisyui")],
@@ -28,9 +26,9 @@ const config: Config = {
       {
         mytheme: {
           primary: "#8338ec",
-        }
-      }
-    ]
-  }
+        },
+      },
+    ],
+  },
 };
 export default config;

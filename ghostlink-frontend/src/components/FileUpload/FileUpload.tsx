@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -31,8 +32,10 @@ const FileUpload = () => {
         {
           method: "POST",
           body: formData,
-        }
+        },
       );
+
+      console.log("RESPONSE: ", response);
 
       if (response.ok) {
         setTimeout(() => {
@@ -45,7 +48,7 @@ const FileUpload = () => {
         }, 4000); // Simulate time for generating post
 
         setTimeout(() => {
-          setLinkedinPost(data.linkedin_post);
+          setLinkedinPost(data.linkedin_post_4o);
           setStatus("Completed!");
         }, 6000); // Complete the process
       } else {
@@ -59,11 +62,11 @@ const FileUpload = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full">
-      <h1 className="text-3xl text-center text-white">
+    <div className="flex w-full flex-col items-center">
+      <h1 className="text-center text-3xl text-white">
         Please select a file to upload!
       </h1>
-      <div className="flex flex-row items-center justify-center mt-9 w-full max-w-md">
+      <div className="mt-9 flex w-full max-w-md flex-row items-center justify-center">
         <input
           type="file"
           className="file-input file-input-bordered w-full max-w-xs"
@@ -80,8 +83,8 @@ const FileUpload = () => {
       </div>
 
       {status !== "" && status !== "Completed!" && (
-        <div className="w-full bg-gray-200 rounded-full mt-6 max-w-md h-6">
-          <div className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full h-full animate-loading">
+        <div className="mt-6 h-6 w-full max-w-md rounded-full bg-gray-200">
+          <div className="animate-loading h-full rounded-full bg-blue-600 p-0.5 text-center text-xs font-medium leading-none text-blue-100">
             {status}
           </div>
         </div>
@@ -89,10 +92,13 @@ const FileUpload = () => {
 
       {linkedinPost && (
         <div className="mt-6 w-full max-w-2xl text-center">
-          <h2 className="text-xl font-bold text-white ">
+          <h2 className="text-xl font-bold text-white">
             Generated LinkedIn Post:
           </h2>
-          <p className="mt-4 text-justify text-white ">{linkedinPost}</p>
+          <p className="mt-4 text-justify text-white">
+            {" "}
+            <ReactMarkdown>{linkedinPost}</ReactMarkdown>
+          </p>
         </div>
       )}
     </div>
