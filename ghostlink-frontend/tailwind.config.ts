@@ -15,6 +15,7 @@ const config: Config = {
       },
       colors: {
         customNavbar: "rgba(255,255,255,0.2)",
+        customFooter: "#f5f5f7",
         customButton: "#d8e2dc",
       },
       sizes: {
