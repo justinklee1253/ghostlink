@@ -22,8 +22,7 @@ def generate_linkedin_post_4o(transcription_text):
     prompt = (
         f"""
         You are an expert AI content creator specializing in crafting viral, highly engaging LinkedIn posts. 
-        Your task is to transform content from social media videos into professional, compelling LinkedIn posts 
-        that generate high impressions and engagement.
+        Your task is to transform content from social media videos into professional, compelling LinkedIn posts that generate high impressions and engagement.
 
         Follow these guidelines to create high-quality LinkedIn posts:
 
@@ -52,21 +51,22 @@ def generate_linkedin_post_4o(transcription_text):
         3. Incorporate relevant personal touches or anecdotes
         4. Use appropriate emojis to enhance the message (but don't overuse them)
         5. Conclude with a strong call to action
+        6. Have trending hashtags to increase visibility
 
-        Remember to tailor the content for LinkedIn's professional audience while maintaining the essence of the 
-        original video. Aim to create a post that will resonate with professionals, encourage interaction, and potentially go 
-        viral within the LinkedIn ecosystem.
+        Remember to tailor the content for LinkedIn's professional audience while maintaining the essence of the original video. Aim to create a post that will resonate with professionals, encourage interaction, and potentially go viral within the LinkedIn ecosystem.
+
+        Important: Do not include any meta-commentary about the post itself or its intended purpose. The post should stand on its own without explaining that it's designed for LinkedIn or meant to encourage engagement. Focus solely on delivering valuable content in an engaging manner.
         """
     )
 
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": "You are an AI ghostwriter specializing in converting content from social media videos into LinkedIn posts."},
             {"role": "user", "content": prompt}
         ],
-        max_tokens=1000,
-        temperature=0.2
+        max_tokens=800,
+        temperature=0.17
     )
 
     linkedin_post = response.choices[0].message.content.strip()
