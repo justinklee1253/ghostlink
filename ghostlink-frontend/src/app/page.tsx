@@ -35,7 +35,7 @@ export default function Home() {
       <div className="flex items-center justify-center w-full min-h-[40vh] bg-[#f5f5f7] ">
         <div className="flex flex-col w-[70vw]">
           <h4 className="w-[47vw] text-5xl mb-3 font-light">Optimize your LinkedIn post with our intuitive tools</h4>
-          <p className="w-[47vw] text-lg font-extralight">Designed to enhance your content's reach and effectiveness. From automated video transcription to engaging content with audience retention, we provide everything you need to captivate your audience and boost your online presence.</p>
+          <p className="w-[47vw] text-lg font-extralight">Designed to enhance your content&apos;s reach and effectiveness. From automated video transcription to engaging content with audience retention, we provide everything you need to captivate your audience and boost your online presence.</p>
         </div>
       </div>
       <div className="flex flex-col items-center justify-center w-full min-h-[60vh] text-white">
