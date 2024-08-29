@@ -1,12 +1,27 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const router = useRouter();
+  const handleHome = () => {
+    router.push("/");
+  };
+
   return (
     <div className="navbar fixed left-1/2 top-8 flex w-[60vw] -translate-x-1/2 transform items-center justify-center rounded-full bg-customNavbar p-3 backdrop-blur-md">
       <div className="navbar-center">
-        <a className="btn btn-ghost text-xl font-medium text-white">
+        <a
+          className="btn btn-ghost text-xl font-medium text-white"
+          onClick={handleHome}
+        >
+          <Image
+            src="/ghostLogoPurple.png"
+            alt="GhostLink Logo"
+            width={35}
+            height={35}
+          />
           GhostLink
         </a>
       </div>

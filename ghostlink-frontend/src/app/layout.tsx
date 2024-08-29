@@ -12,7 +12,7 @@ export const metadata = {
   icons: [
     {
       rel: "icon",
-      url: "/sampleLogo2.jpg",
+      url: "/ghostLogoPurple.png",
       sizes: "16x16", // Specify the size
     },
   ],
