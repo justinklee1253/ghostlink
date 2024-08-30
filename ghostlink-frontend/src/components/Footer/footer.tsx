@@ -15,18 +15,21 @@ const Footer = () => {
           />
           <h2 className="text-4xl font-bold">GhostLink</h2>
         </div>
-        <div className="flex gap-[1.5vw] text-base font-thin">
-          <div className="flex flex-col">
-            <p>Creators</p>
+        <div className="flex flex-col gap-1 text-base font-thin">
+          <div className="flex flex-row justify-between gap-5">
+            <p className="italic">Creators:</p>
             <p>Sajin Saju</p>
             <p>Nicholas Yim</p>
             <p>Aseef Durrani</p>
             <p>Justin Lee</p>
           </div>
-          <div className="flex flex-col">
+          <div className="flex">
             <p>Version 1.0.0</p>
           </div>
         </div>
+        <a href="https://www.flaticon.com/free-icons/user" title="user icons">
+          User icons created by Flat Icons - Flaticon
+        </a>
       </div>
     </div>
   );
