@@ -54,8 +54,8 @@ export default function Home() {
           you create impactful LinkedIn posts that drive high engagement.
         </p>
         <div className="flex w-full justify-center gap-[1vw]">
-          <button className="btn btn-primary" onClick={handleFileUpload}>
-            Get Started
+          <button className="btn btn-primary" onClick={handleWaitlist}>
+            Join Waitlist
           </button>
           <button className="ghost btn border-0 text-white">Learn More</button>
         </div>
