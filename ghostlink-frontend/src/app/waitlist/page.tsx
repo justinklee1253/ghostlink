@@ -31,7 +31,11 @@ const Waitlist = () => {
   }
 
   const handleFormSubmitted = () => {
-    if (formData.fullName && formData.email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    if(!emailPattern.test(formData.email)) {
+      alert('Please enter a valid email address.');
+    } else if (formData.fullName && formData.email) {
       const modal = document.getElementById('my_modal_3');
       if (modal) {
         (modal as HTMLDialogElement).showModal();

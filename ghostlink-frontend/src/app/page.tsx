@@ -31,7 +31,15 @@ export default function Home() {
   };
 
   const handleWaitlist = () => {
-    router.push(`/waitlist?email=${encodeURIComponent(email)}`);
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    if(emailPattern.test(email)) {
+      router.push(`/waitlist?email=${encodeURIComponent(email)}`);
+    } else if(email === '') {
+      router.push(`/waitlist`);
+    } else {
+      alert("Please enter a valid email address.");
+    }
   };
 
   return (
