@@ -14,6 +14,7 @@ class User(db.Model):
     name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc), nullable=False)
+    is_waitlisted = db.Column(db.Boolean, default=False, nullable=False)
 
     # its relationship to posts model
     posts = db.relationship('Post', backref='user', lazy=True)

@@ -1,9 +1,6 @@
 "use client";
 import { link } from "fs";
 import { useState } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkBreaks from "remark-breaks";
-import remarkGfm from "remark-gfm";
 import PostMockUp from "../postMockup/postMockUp";
 
 const FileUpload = () => {
