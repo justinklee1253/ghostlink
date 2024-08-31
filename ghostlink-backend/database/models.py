@@ -42,7 +42,7 @@ class Waitlist(db.Model):
 
     id = db.Column(db.String, primary_key=True, default=lambda: str(uuid.uuid4()))
     user_id = db.Column(db.String, db.ForeignKey('users.id'), nullable=False)
-    is_waitlisted = db.Column(db.Boolean, default=True, nullable=False)
+    is_waitlisted = db.Column(db.Boolean, default=False, nullable=False)
 
     def __repr__(self):
         return f'<Waitlist {self.id}>'
