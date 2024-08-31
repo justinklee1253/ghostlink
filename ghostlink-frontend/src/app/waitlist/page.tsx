@@ -54,7 +54,7 @@ const Waitlist = () => {
       formData.append("email", waitlistData.email);
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/upload`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/waitlist`,
         {
           method: "POST",
           body: formData,
@@ -150,8 +150,8 @@ const Waitlist = () => {
                   We have added you to the waitlist!
                 </h3>
                 <p className="text-md py-4 text-center font-light">
-                  Stay tuned for our launch date {waitlistData.fullName}, we
-                  will be emailing to {waitlistData.email} on any updates!
+                  Stay tuned for our launch date <strong>{waitlistData.fullName}</strong>, we
+                  will be emailing you at <strong>{waitlistData.email}</strong> with any updates!
                 </p>
               </div>
             </dialog>
