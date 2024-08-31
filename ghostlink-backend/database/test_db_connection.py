@@ -30,9 +30,11 @@ def upsert_user_with_post(user_id, name, email, post_text):
                 print(f"Adding new user: {name}.")
 
             # Create a post for the user with a generated UUID for the id
-            post = Post(id=str(uuid.uuid4()), user_id=user_id, generated_text=post_text)
-            db.session.add(post)
-            print(f"Adding post for user {name}.")
+            
+            # commenting out for now
+            # post = Post(id=str(uuid.uuid4()), user_id=user_id, generated_text=post_text)
+            # db.session.add(post)
+            # print(f"Adding post for user {name}.")
 
             # Commit the changes to the database
             db.session.commit()
@@ -47,9 +49,9 @@ def upsert_user_with_post(user_id, name, email, post_text):
 
 if __name__ == "__main__":
     # Test data
-    dummy_user_id = "12345"  # Example user ID (use a real UUID in production)
-    dummy_name = "John Doe"
-    dummy_email = "johndoe@example.com"
-    dummy_post_text = "This is a generated LinkedIn post for John Doe."
+    dummy_user_id = "123456789"  # Example user ID (use a real UUID in production)
+    dummy_name = "John Doe pt2"
+    dummy_email = "johndoe2@example.com"
+    dummy_post_text = "This is a generated LinkedIn post for John Doe part2."
 
     upsert_user_with_post(dummy_user_id, dummy_name, dummy_email, dummy_post_text)
