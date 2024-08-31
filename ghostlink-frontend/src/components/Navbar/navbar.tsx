@@ -2,11 +2,59 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useUser, SignInButton, useClerk, useAuth } from "@clerk/nextjs";
 
 const Navbar = () => {
   const router = useRouter();
+  const { isSignedIn } = useUser();
+  const { signOut } = useClerk();
+  const { getToken } = useAuth(); // Hook to get the user's auth token
+
   const handleHome = () => {
     router.push("/");
+  };
+
+  const handleLogOut = () => {
+    signOut();
+    router.push("/");
+  };
+
+  // Function to make an authenticated request
+  // call makeAuthenticatedRequest wherever you need to make backend requests that require authentication
+
+  /*
+  
+  // Example call to  Flask backend
+
+  const fetchProtectedData = async () => {
+    const data = await makeAuthenticatedRequest('/example_route');
+    console.log(data); // Handle the data from the backend
+  };
+
+  */
+  const makeAuthenticatedRequest = async (endpoint: string, options: RequestInit = {}) => {
+    try {
+      // Retrieve the token
+      const token = await getToken();
+  
+      // Inject the token into the headers
+      const response = await fetch(endpoint, {
+        ...options,
+        headers: {
+          ...options.headers,
+          Authorization: `Bearer ${token}`, // Add the token to the Authorization header
+        },
+      });
+  
+      // Handle response
+      if (!response.ok) {
+        throw new Error("Failed to fetch");
+      }
+  
+      return await response.json();
+    } catch (error) {
+      console.error("Error making authenticated request:", error);
+    }
   };
 
   return (
@@ -71,15 +119,30 @@ const Navbar = () => {
             tabIndex={0}
             className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
           >
-            <li>
-              <a href="/">Get Started</a>
-            </li>
-            <li>
-              <a href="/uploadFile">Make a Linkedin Post</a>
-            </li>
-            <li>
-              <a>About Us</a>
-            </li>
+            {isSignedIn ? (
+              <>
+                <li>
+                  <a href="/uploadVideo">Make a LinkedIn Post</a>
+                </li>
+                <li>
+                  <a href="#">About Us</a>
+                </li>
+                <li>
+                  <button onClick={handleLogOut}>Log Out</button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <a href="#">About Us</a>
+                </li>
+                <li>
+                  <SignInButton mode="modal" fallbackRedirectUrl="/dashboard">
+                    <button>Log In</button>
+                  </SignInButton>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

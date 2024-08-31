@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar/navbar";
 import Footer from "@/components/Footer/footer";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata = {
   title: "GhostLink",
@@ -21,11 +22,13 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
+      <ClerkProvider>
+        <body>
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </ClerkProvider>
     </html>
   );
 }
