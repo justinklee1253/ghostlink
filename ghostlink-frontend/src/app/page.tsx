@@ -1,4 +1,5 @@
 "use client";
+import { useState, ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -7,6 +8,8 @@ import Image from "next/image";
 import DashboardImg from "@/assets/Images/DashboardImg.jpg";
 
 export default function Home() {
+  const [email, setEmail] = useState('')
+
   const { ref: ref1, inView: inView1 } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -16,10 +19,19 @@ export default function Home() {
     threshold: 0.6,
   });
 
+  const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
+    const { value } = evt.target
+    setEmail(value)
+  }
+
   const router = useRouter();
 
   const handleFileUpload = () => {
     router.push("/uploadVideo");
+  };
+
+  const handleWaitlist = () => {
+    router.push(`/waitlist?email=${encodeURIComponent(email)}`);
   };
 
   return (
@@ -84,11 +96,11 @@ export default function Home() {
         <h4 className="mb-8 w-[37vw] text-center text-5xl font-light">
           Ditch the ghostwriters and elevate your engagement.
         </h4>
-        <div className="flex gap-[1vw]">
-          <button className="btn btn-primary" onClick={handleFileUpload}>
-            Sign Up
+        <div className="flex bg-[#f5f5f7] gap-[1vw] pt-1 pb-1 pl-6 pr-1 rounded-md">
+          <input type="email" placeholder="Enter your email" className="bg-transparent text-black focus:outline-none text-lg" value={email} onChange={handleChange}/>
+          <button className="btn btn-primary" onClick={handleWaitlist}>
+            Join Waitlist
           </button>
-          <button className="ghost btn border-0 text-white">Not Sure?</button>
         </div>
       </motion.div>
     </div>
