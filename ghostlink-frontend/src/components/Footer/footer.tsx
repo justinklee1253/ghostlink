@@ -27,8 +27,12 @@ const Footer = () => {
             <p>Version 1.0.0</p>
           </div>
         </div>
-        <a href="https://www.flaticon.com/free-icons/user" title="user icons">
-          User icons created by Flat Icons - Flaticon
+        <a
+            href="https://www.flaticon.com/free-icons/user"
+            title="user icons"
+            className="text-sm text-gray-400 font-thin hover:underline"
+        >
+            User icons created by Flat Icons - Flaticon
         </a>
       </div>
     </div>
