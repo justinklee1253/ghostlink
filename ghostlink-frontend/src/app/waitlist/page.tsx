@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, ChangeEvent, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 const Waitlist = () => {
   const router = useRouter()
@@ -44,10 +45,10 @@ const Waitlist = () => {
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="flex flex-col items-center rounded-lg p-14 gap-6">
-        <div className="text-white text-center">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.5 }} className="text-white text-center">
           <h2 className="text-7xl font-medium text-gray-500">Join the waitlist for</h2>
           <h2 className="text-7xl font-medium bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">GhostLink!</h2>
-        </div>
+        </motion.div>
         <div className="flex flex-col w-[18vw] gap-6">
           <div className="flex flex-col gap-4"> 
             <label className="input input-bordered flex items-center gap-2 bg-black border-2 border-[#484444] focus-within:border-[#484444] hover:bg-[rgba(255,255,255,0.1)]">
