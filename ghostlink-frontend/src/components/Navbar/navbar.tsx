@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useUser, SignInButton, useClerk, useAuth } from "@clerk/nextjs";
+import { useUser, SignInButton, useClerk, useAuth, SignUpButton } from "@clerk/nextjs";
 
 const Navbar = () => {
   const router = useRouter();
@@ -135,6 +135,11 @@ const Navbar = () => {
               <>
                 <li>
                   <a href="#">About Us</a>
+                </li>
+                <li>
+                  <SignUpButton mode="modal" fallbackRedirectUrl="/dashboard">
+                    <button>Get Started</button>
+                  </SignUpButton>
                 </li>
                 <li>
                   <SignInButton mode="modal" fallbackRedirectUrl="/dashboard">
