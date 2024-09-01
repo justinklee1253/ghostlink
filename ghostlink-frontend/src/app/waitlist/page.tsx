@@ -7,6 +7,7 @@ const Waitlist = () => {
   const router = useRouter();
 
   const [waitlistData, setWaitlistData] = useState({ fullName: "", email: "" });
+  const [submittedData, setSubmittedData] = useState({ fullName: "", email: "" }); // New state for submitted data
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
@@ -19,9 +20,6 @@ const Waitlist = () => {
     }
   }, []);
 
-  /* 
-    Objective: When the user inputs a value in the form, update the state of the value.
-  */
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = evt.target;
     setWaitlistData((prevData) => ({
@@ -32,27 +30,27 @@ const Waitlist = () => {
 
   const handleFormSubmitted = async () => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  
     if (!emailPattern.test(waitlistData.email)) {
       alert("Please enter a valid email address.");
       return;
     }
-
+  
     if (!waitlistData.fullName || !waitlistData.email) {
       alert("Please fill out both fields.");
       return;
     }
-
+  
     const modal = document.getElementById("my_modal_3");
     if (modal) {
       (modal as HTMLDialogElement).showModal();
     }
-
+  
     try {
       const formData = new FormData();
       formData.append("fullName", waitlistData.fullName);
       formData.append("email", waitlistData.email);
-
+  
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/waitlist`,
         {
@@ -61,21 +59,28 @@ const Waitlist = () => {
           headers: {
             Accept: "application/json",
           },
-        },
+        }
       );
-
+  
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
+  
       const result = await response.json();
-      console.log("RESPONSE: ", result);
+      // console.log("RESPONSE: ", result);
+  
+      // Set submitted data for modal display
+      setSubmittedData(waitlistData);
+      
+      // Clear the form entries after successful submission
+      setWaitlistData({ fullName: "", email: "" });
+  
     } catch (error) {
       console.error("ERROR: ", error);
       alert("There was an error submitting the form. Please try again later.");
     }
   };
-
+  
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="flex flex-col items-center gap-6 rounded-lg p-14">
@@ -150,8 +155,8 @@ const Waitlist = () => {
                   We have added you to the waitlist!
                 </h3>
                 <p className="text-md py-4 text-center font-light">
-                  Stay tuned for our launch date <strong>{waitlistData.fullName}</strong>, we
-                  will be emailing you at <strong>{waitlistData.email}</strong> with any updates!
+                  Stay tuned for our launch date <strong>{submittedData.fullName}</strong>, we
+                  will be emailing you at <strong>{submittedData.email}</strong> with any updates!
                 </p>
               </div>
             </dialog>
