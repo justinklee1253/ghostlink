@@ -138,7 +138,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <SignUpButton mode="modal" fallbackRedirectUrl="/dashboard">
-                    <button>Get Started</button>
+                    <button>Sign Up</button>
                   </SignUpButton>
                 </li>
                 <li>
