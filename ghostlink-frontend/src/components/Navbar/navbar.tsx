@@ -2,7 +2,13 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useUser, SignInButton, useClerk, useAuth, SignUpButton } from "@clerk/nextjs";
+import {
+  useUser,
+  SignInButton,
+  useClerk,
+  useAuth,
+  SignUpButton,
+} from "@clerk/nextjs";
 
 const Navbar = () => {
   const router = useRouter();
@@ -21,22 +27,14 @@ const Navbar = () => {
 
   // Function to make an authenticated request
   // call makeAuthenticatedRequest wherever you need to make backend requests that require authentication
-
-  /*
-  
-  // Example call to  Flask backend
-
-  const fetchProtectedData = async () => {
-    const data = await makeAuthenticatedRequest('/example_route');
-    console.log(data); // Handle the data from the backend
-  };
-
-  */
-  const makeAuthenticatedRequest = async (endpoint: string, options: RequestInit = {}) => {
+  const makeAuthenticatedRequest = async (
+    endpoint: string,
+    options: RequestInit = {}
+  ) => {
     try {
       // Retrieve the token
       const token = await getToken();
-  
+
       // Inject the token into the headers
       const response = await fetch(endpoint, {
         ...options,
@@ -45,12 +43,12 @@ const Navbar = () => {
           Authorization: `Bearer ${token}`, // Add the token to the Authorization header
         },
       });
-  
+
       // Handle response
       if (!response.ok) {
         throw new Error("Failed to fetch");
       }
-  
+
       return await response.json();
     } catch (error) {
       console.error("Error making authenticated request:", error);
@@ -58,10 +56,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar fixed left-1/2 top-8 flex w-[60vw] -translate-x-1/2 transform items-center justify-center rounded-full bg-customNavbar p-3 backdrop-blur-md">
-      <div className="navbar-center">
+    <div className="navbar fixed left-1/2 top-8 flex w-[90vw] max-w-[60vw] -translate-x-1/2 transform items-center justify-between rounded-full bg-customNavbar p-3 backdrop-blur-md md:justify-center md:w-[60vw]">
+      <div className="navbar-start">
         <a
-          className="btn btn-ghost text-xl font-medium text-white"
+          className="btn btn-ghost text-xl font-medium text-white flex items-center"
           onClick={handleHome}
         >
           <Image
@@ -69,13 +67,14 @@ const Navbar = () => {
             alt="GhostLink Logo"
             width={35}
             height={35}
+            className="mr-2"
           />
-          GhostLink
+          <span className="hidden md:inline">GhostLink</span>
         </a>
       </div>
-      <div className="navbar-start"></div>
-      <div className="navbar-end">
-        <button className="btn btn-circle btn-ghost text-black">
+
+      <div className="navbar-end flex space-x-2">
+        <button className="btn btn-circle btn-ghost text-black md:hidden">
           <div className="indicator">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -94,10 +93,9 @@ const Navbar = () => {
             <span className="badge indicator-item badge-primary badge-xs"></span>
           </div>
         </button>
-        <div className="dropdown">
-          <div
+        <div className="dropdown dropdown-end">
+          <button
             tabIndex={0}
-            role="button"
             className="btn btn-circle btn-ghost text-black"
           >
             <svg
@@ -114,7 +112,7 @@ const Navbar = () => {
                 d="M4 6h16M4 12h16M4 18h7"
               />
             </svg>
-          </div>
+          </button>
           <ul
             tabIndex={0}
             className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
