@@ -58,7 +58,7 @@ const PostButtonSection = ({ onSchedulePost }: PostButtonSectionProps) => {
             <h2 className="text-lg font-bold mb-4">Schedule Post In Advance</h2>
             <DatePicker
               selected={selectedDate}
-              onChange={(date: Date) => setSelectedDate(date)}
+              onChange={(date: Date | null) => setSelectedDate(date)}
               showTimeSelect
               dateFormat="Pp" // Displays date and time
               className="mt-2 p-2 border rounded w-full"

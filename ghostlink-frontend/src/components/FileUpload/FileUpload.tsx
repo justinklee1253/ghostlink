@@ -31,6 +31,11 @@ const FileUpload = () => {
   const [linkedinPost4oMini, setLinkedinPost4oMini] = useState<string | null>(null);
   const [status, setStatus] = useState<string>("");
 
+  const handleImageUpload = (imageUrl: string) => {
+    // Logic for handling image uploads
+    console.log("Image uploaded:", imageUrl);
+  };
+
   const componentsStyle = {
     p: ({ node, ...props }: { node?: unknown; [key: string]: any }) => (
       <p className="mb-4" {...props} />
@@ -120,19 +125,20 @@ const FileUpload = () => {
   };
 
   return (
-    <div className="flex w-full flex-col items-center">
-      <h2 className="text-center text-xl font-bold text-white">
-        Please select a file to upload:
+    <div className="flex w-full flex-col items-center p-4 md:p-0"> {/* Add padding for better mobile spacing */}
+      <h2 className="text-center text-xl font-bold text-white mb-4">
+        Please select a video to upload:
       </h2>
-      <div className="mt-6 flex w-full max-w-md flex-row items-center justify-center">
+      <div className="mt-6 flex w-full max-w-md flex-col items-center md:flex-row md:justify-center">
         <input
           type="file"
-          className="file-input file-input-bordered w-full max-w-xs"
+          className="file-input file-input-bordered w-full max-w-xs mb-4 md:mb-0 md:mr-3"
+          accept="video/*" // Restrict file input to video files
           onChange={handleFileChange}
           disabled={status !== "" && status !== "Completed!"}
         />
         <button
-          className="btn btn-primary ml-3"
+          className="btn btn-primary w-full md:w-auto"
           onClick={handleFileSubmit}
           disabled={status !== "" && status !== "Completed!"}
         >
@@ -160,6 +166,7 @@ const FileUpload = () => {
                 onSave={(content) => setLinkedinPost4o(content)}
                 onCancel={() => {}}
                 componentsStyle={componentsStyle}
+                onImageUpload={handleImageUpload}
               />
             }
             linkedInPost4oMini={
@@ -168,6 +175,7 @@ const FileUpload = () => {
                 onSave={(content) => setLinkedinPost4oMini(content)}
                 onCancel={() => {}}
                 componentsStyle={componentsStyle}
+                onImageUpload={handleImageUpload}
               />
             }
           />

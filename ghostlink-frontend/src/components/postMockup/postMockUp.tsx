@@ -39,6 +39,15 @@ const PostMockUp = ({ linkedInPost4o, linkedInPost4oMini }: PostMockUpProps) => 
     resetFileInput(fileInputRef4oMini);
   };
 
+  // Define the onSchedulePost function
+  const handleSchedulePost = (date: Date | null) => {
+    if (date) {
+      console.log("Post scheduled for:", date); // Replace this with your scheduling logic
+    } else {
+      console.log("No date selected."); // Handle case when no date is selected
+    }
+  };
+
   return (
     <div className="flex flex-col lg:flex-row gap-10 p-5 lg:p-10">
       {/* First Post Area */}
@@ -62,7 +71,7 @@ const PostMockUp = ({ linkedInPost4o, linkedInPost4oMini }: PostMockUpProps) => 
           ))}
           {/* Icons positioned below the text */}
           <IconsSection onImageUpload={handleImageUpload4o} fileInputRef={fileInputRef4o} />
-          <PostButtonSection />
+          <PostButtonSection onSchedulePost={handleSchedulePost} /> {/* Pass the required prop */}
         </div>
       </div>
 
@@ -87,7 +96,7 @@ const PostMockUp = ({ linkedInPost4o, linkedInPost4oMini }: PostMockUpProps) => 
           ))}
           {/* Icons positioned below the text */}
           <IconsSection onImageUpload={handleImageUpload4oMini} fileInputRef={fileInputRef4oMini} />
-          <PostButtonSection />
+          <PostButtonSection onSchedulePost={handleSchedulePost} /> {/* Pass the required prop */}
         </div>
       </div>
     </div>
