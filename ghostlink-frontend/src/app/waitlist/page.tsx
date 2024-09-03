@@ -96,7 +96,7 @@ const Waitlist = () => {
         </motion.div>
         <div className="flex w-full flex-col gap-6">
           <div className="flex flex-col gap-4">
-            <label className="input input-bordered flex items-center gap-2 border-2 border-[#484444] bg-black focus-within:border-[#484444] hover:bg-[rgba(255,255,255,0.1)]">
+            <label className="input input-bordered flex items-center gap-2 overflow-x-auto border-2 border-[#484444] bg-black focus-within:border-[#484444] hover:bg-[rgba(255,255,255,0.1)]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
@@ -114,7 +114,7 @@ const Waitlist = () => {
                 onChange={handleChange}
               />
             </label>
-            <label className="input input-bordered flex items-center gap-2 border-2 border-[#484444] bg-black focus-within:border-[#484444] hover:bg-[rgba(255,255,255,0.1)]">
+            <label className="input input-bordered flex items-center gap-2 overflow-x-auto border-2 border-[#484444] bg-black focus-within:border-[#484444] hover:bg-[rgba(255,255,255,0.1)]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
