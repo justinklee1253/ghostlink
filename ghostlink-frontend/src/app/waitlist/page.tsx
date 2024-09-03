@@ -7,6 +7,7 @@ const Waitlist = () => {
   const router = useRouter();
 
   const [waitlistData, setWaitlistData] = useState({ fullName: "", email: "" });
+  const [submittedData, setSubmittedData] = useState({ fullName: "", email: "" }); // New state for submitted data
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
@@ -19,9 +20,6 @@ const Waitlist = () => {
     }
   }, []);
 
-  /* 
-    Objective: When the user inputs a value in the form, update the state of the value.
-  */
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = evt.target;
     setWaitlistData((prevData) => ({
@@ -61,7 +59,7 @@ const Waitlist = () => {
           headers: {
             Accept: "application/json",
           },
-        },
+        }
       );
 
       if (!response.ok) {
@@ -69,7 +67,11 @@ const Waitlist = () => {
       }
 
       const result = await response.json();
-      console.log("RESPONSE: ", result);
+      // Set submitted data for modal display
+      setSubmittedData(waitlistData);
+
+      // Clear the form entries after successful submission
+      setWaitlistData({ fullName: "", email: "" });
     } catch (error) {
       console.error("ERROR: ", error);
       alert("There was an error submitting the form. Please try again later.");
@@ -77,22 +79,22 @@ const Waitlist = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="flex flex-col items-center gap-6 rounded-lg p-14">
-        <motion.div
+    <div className="flex min-h-screen items-center justify-center px-4 md:px-0">
+      <div className="flex flex-col items-center gap-6 rounded-lg p-6 w-full max-w-md md:max-w-lg md:p-10 lg:p-14">
+      <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
           className="text-center text-white"
         >
-          <h2 className="text-7xl font-medium text-gray-500">
+          <h2 className="text-4xl md:text-7xl font-medium text-gray-500">
             Join the waitlist for
           </h2>
-          <h2 className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-7xl font-medium text-transparent">
+          <h2 className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-4xl md:text-7xl font-medium text-transparent">
             GhostLink!
           </h2>
         </motion.div>
-        <div className="flex w-[18vw] flex-col gap-6">
+        <div className="flex w-full flex-col gap-6">
           <div className="flex flex-col gap-4">
             <label className="input input-bordered flex items-center gap-2 overflow-x-auto border-2 border-[#484444] bg-black focus-within:border-[#484444] hover:bg-[rgba(255,255,255,0.1)]">
               <svg
@@ -105,8 +107,8 @@ const Waitlist = () => {
               </svg>
               <input
                 type="text"
-                className="grow overflow-x-auto text-white"
-                placeholder="Full Name..."
+                className="grow text-white"
+                placeholder="Full Name"
                 name="fullName"
                 value={waitlistData.fullName}
                 onChange={handleChange}
@@ -124,8 +126,8 @@ const Waitlist = () => {
               </svg>
               <input
                 type="text"
-                className="grow overflow-x-auto text-white"
-                placeholder="Email..."
+                className="grow text-white"
+                placeholder="Email Address"
                 name="email"
                 value={waitlistData.email}
                 onChange={handleChange}
@@ -151,8 +153,8 @@ const Waitlist = () => {
                 </h3>
                 <p className="text-md py-4 text-center font-light">
                   Stay tuned for our launch date{" "}
-                  <strong>{waitlistData.fullName}</strong>, we will be emailing
-                  you at <strong>{waitlistData.email}</strong> with any updates!
+                  <strong>{submittedData.fullName}</strong>, we will be emailing
+                  you at <strong>{submittedData.email}</strong> with any updates!
                 </p>
               </div>
             </dialog>
