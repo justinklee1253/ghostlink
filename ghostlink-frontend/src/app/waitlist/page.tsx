@@ -94,7 +94,7 @@ const Waitlist = () => {
         </motion.div>
         <div className="flex w-[18vw] flex-col gap-6">
           <div className="flex flex-col gap-4">
-            <label className="input input-bordered flex items-center gap-2 border-2 border-[#484444] bg-black focus-within:border-[#484444] hover:bg-[rgba(255,255,255,0.1)]">
+            <label className="input input-bordered flex items-center gap-2 overflow-x-auto border-2 border-[#484444] bg-black focus-within:border-[#484444] hover:bg-[rgba(255,255,255,0.1)]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
@@ -105,14 +105,14 @@ const Waitlist = () => {
               </svg>
               <input
                 type="text"
-                className="grow text-white"
+                className="grow overflow-x-auto text-white"
                 placeholder="Full Name..."
                 name="fullName"
                 value={waitlistData.fullName}
                 onChange={handleChange}
               />
             </label>
-            <label className="input input-bordered flex items-center gap-2 border-2 border-[#484444] bg-black focus-within:border-[#484444] hover:bg-[rgba(255,255,255,0.1)]">
+            <label className="input input-bordered flex items-center gap-2 overflow-x-auto border-2 border-[#484444] bg-black focus-within:border-[#484444] hover:bg-[rgba(255,255,255,0.1)]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
@@ -124,8 +124,8 @@ const Waitlist = () => {
               </svg>
               <input
                 type="text"
-                className="grow text-white"
-                placeholder="Email Address..."
+                className="grow overflow-x-auto text-white"
+                placeholder="Email..."
                 name="email"
                 value={waitlistData.email}
                 onChange={handleChange}
@@ -150,8 +150,9 @@ const Waitlist = () => {
                   We have added you to the waitlist!
                 </h3>
                 <p className="text-md py-4 text-center font-light">
-                  Stay tuned for our launch date <strong>{waitlistData.fullName}</strong>, we
-                  will be emailing you at <strong>{waitlistData.email}</strong> with any updates!
+                  Stay tuned for our launch date{" "}
+                  <strong>{waitlistData.fullName}</strong>, we will be emailing
+                  you at <strong>{waitlistData.email}</strong> with any updates!
                 </p>
               </div>
             </dialog>
