@@ -31,6 +31,10 @@ export default function Home() {
     router.push("/uploadVideo");
   };
 
+  const handleAbout = () => {
+    router.push("/about");
+  };
+
   const handleWaitlist = () => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -66,7 +70,7 @@ export default function Home() {
           <button className="btn btn-primary" onClick={handleWaitlist}>
             Join Waitlist
           </button>
-          <button className="ghost btn border-0 text-white">Learn More</button>
+          <button className="ghost btn border-0 text-white" onClick={handleAbout}>Learn More</button>
         </div>
       </motion.div>
         <div className="w-full max-w-[85vw] md:max-w-[65vw] mt-4">
