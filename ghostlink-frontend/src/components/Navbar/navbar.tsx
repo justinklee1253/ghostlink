@@ -19,6 +19,10 @@ const Navbar = () => {
   const handleHome = () => {
     router.push("/");
   };
+  
+  const handleAbout = () => {
+    router.push("/about");
+  };
 
   const handleLogOut = () => {
     signOut();
@@ -71,6 +75,9 @@ const Navbar = () => {
           />
           <span className="hidden md:inline">GhostLink</span>
         </a>
+      </div>
+      <div className="navbar-middle">
+          <button className="btn btn-ghost text-white font-medium text-xl" onClick={handleAbout}>About</button>
       </div>
 
       <div className="navbar-end flex space-x-2">
