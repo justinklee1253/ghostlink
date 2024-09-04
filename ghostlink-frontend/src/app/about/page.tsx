@@ -3,6 +3,7 @@ import { useState, ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import { ChevronDownIcon } from "@heroicons/react/24/outline"; 
 import Image from "next/image";
 import product from "@/assets/Images/product.png";
 import waitlist from "@/assets/Images/waitlist.png";
@@ -53,6 +54,12 @@ export default function About() {
     }
   };
 
+  // Function to scroll to the next section
+  const scrollToNextSection = () => {
+    document.getElementById("next-section")?.scrollIntoView({ behavior: "smooth" });
+  };
+  
+
   return (
     <div className="flex flex-col justify-center items-center text-white w-full">
       <motion.div
@@ -80,8 +87,16 @@ export default function About() {
             Join Waitlist
           </button>
         </div>
+
+        {/* Down arrow to indicate scrolling */}
+        <ChevronDownIcon
+          onClick={scrollToNextSection}
+          className="w-8 h-8 text-white cursor-pointer absolute bottom-10 animate-bounce"
+          aria-label="Scroll down"
+        />
+
       </motion.div>
-      <div className="flex w-full flex-col p-4 md:pl-[15vw] md:pr-[15vw] pt-20 md:pt-40 pb-20 md:pb-40 bg-[#f5f5f7] text-black">
+      <div id="next-section" className="flex w-full flex-col p-4 md:pl-[15vw] md:pr-[15vw] pt-20 md:pt-40 pb-20 md:pb-40 bg-[#f5f5f7] text-black">
         <motion.div
           ref={ref1}
           initial={{ opacity: 0 }}
