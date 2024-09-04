@@ -1,40 +1,43 @@
-import { clerkMiddleware, createRouteMatcher, auth } from "@clerk/nextjs/server";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
-// Create a matcher for the protected route
-const isProtectedRoute = createRouteMatcher(['/dashboard(.*)', '/uploadVideo(.*)']);
+// List of unprotected routes
+const publicRoutes = ['/', '/about', '/waitlist', '/dashboard'];
 
-export default clerkMiddleware((auth, req) => {
-  if (isProtectedRoute(req)) {
-    const { userId } = auth();
-    
-    if (!userId) {
-      // User is not authenticated
-      return new NextResponse(
-        JSON.stringify({ message: "You must be logged in to access this page." }),
-        { status: 401, headers: { "content-type": "application/json" } }
-      );
-    }
-    
-    // TODO: Add subscription check here in the future
-    // For now, you can uncomment the following lines to manually check a flag
-    // const { sessionClaims } = auth();
-    // if (!sessionClaims?.subscribed) {
-    //   return new NextResponse(
-    //     JSON.stringify({ message: "You must have an active subscription to access this page." }),
-    //     { status: 403, headers: { "content-type": "application/json" } }
-    //   );
-    // }
+// Middleware to protect all routes except the ones in publicRoutes
+export function middleware(req: NextRequest) {
+  const url = req.nextUrl;
+  const token = url.searchParams.get('token');
+  const validToken = process.env.AUTH_TOKEN;
+
+  // Allow access to static files, images, and Next.js internals
+  if (
+    url.pathname.startsWith('/_next') || // Allow Next.js internals
+    url.pathname.startsWith('/static') || // Allow static assets
+    url.pathname.startsWith('/public') || // Allow public directory assets
+    url.pathname.startsWith('/images') || // Allow image directory
+    url.pathname === '/favicon.ico' || // Allow favicon
+    url.pathname.endsWith('.png') || // Allow PNG images
+    url.pathname.endsWith('.jpg') || // Allow JPG images
+    url.pathname.endsWith('.jpeg') || // Allow JPEG images
+    url.pathname.endsWith('.svg') // Allow SVG images
+  ) {
+    return NextResponse.next();
   }
-  
+
+  // Check if the route is public
+  if (publicRoutes.includes(url.pathname)) {
+    return NextResponse.next();
+  }
+
+  // If the token is not valid, redirect to home
+  if (!token || token !== validToken) {
+    return NextResponse.redirect(new URL('/', req.url));
+  }
+
   return NextResponse.next();
-});
+}
 
 export const config = {
-  matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Always run for API routes
-    '/(api|trpc)(.*)',
-  ],
+  // Apply middleware to all routes
+  matcher: ['/:path*'], // Apply to all paths
 };

@@ -126,13 +126,14 @@ const Navbar = () => {
             tabIndex={0}
             className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
           >
-            {isSignedIn ? (
+            {
+              <li>
+              <a >Coming soon!</a>
+              </li>            
+            /* {isSignedIn ? (
               <>
                 <li>
                   <a href="/uploadVideo">Make a LinkedIn Post</a>
-                </li>
-                <li>
-                  <a href="#">About Us</a>
                 </li>
                 <li>
                   <button onClick={handleLogOut}>Log Out</button>
@@ -140,9 +141,6 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <li>
-                  <a href="#">About Us</a>
-                </li>
                 <li>
                   <SignUpButton mode="modal" fallbackRedirectUrl="/dashboard">
                     <button>Sign Up</button>
@@ -154,7 +152,7 @@ const Navbar = () => {
                   </SignInButton>
                 </li>
               </>
-            )}
+            )} */}
           </ul>
         </div>
       </div>
