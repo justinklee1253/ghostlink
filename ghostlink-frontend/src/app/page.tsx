@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import DashboardImg from "@/assets/Images/DashboardImg.jpg";
 
+
 export default function Home() {
   const [email, setEmail] = useState('')
 

@@ -4,7 +4,10 @@ import { useRouter } from "next/navigation";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
+import product from "@/assets/Images/product.png";
+import waitlist from "@/assets/Images/waitlist.png";
+import themeeno2 from "@/assets/Images/themeeno2.png";
+import cool from "@/assets/Images/cool.png";
 import VideoInput from "@/assets/Images/VideoInput.png";
 
 export default function About() {
@@ -85,10 +88,10 @@ export default function About() {
                     animate={{ opacity: inView1 ? 1 : 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="w-[55vw] md:text-5xl font-light mb-20">Effortlessly turn your video content into engaging LinkedIn posts.</h2>
+                    <h2 className="w-[55vw] md:text-5xl font-light mb-20"></h2>
                 </motion.div>
                 <div className="flex flex-col w-[65vw] gap-[5vw]">
-                    <motion.div 
+                <motion.div 
                         ref={ref2}
                         initial={{ opacity: 0, x: -100 }}
                         animate={{ opacity: inView2 ? 1 : 0, x: inView2 ? 0 : -100 }}
@@ -96,11 +99,17 @@ export default function About() {
                         className="flex justify-between items-center"
                     >
                         <div className="bg-[rgba(179,214,243,1.0)] rounded-xl pl-[2vw] pr-[2vw] pt-10 pb-10" >
-                            <Image className="w-[25vw]" src={VideoInput} alt="VideoInput Image"/>
+                            <Image className="w-[25vw]" src={product} alt="VideoInput Image"/>
                         </div>
                         <div className="flex flex-col gap-[1.5vw] w-[30vw]">
-                            <h4 className="text-3xl font-light">Easily inplace your video for transcription</h4>
-                            <p className="text-base md:text-lg font-extralight">Video file can be of any type: MP4, MOV, AVi, WMV, AVCHD, etc . . . </p>
+                            <h4 className="text-3xl font-light">Our Mission</h4>
+                            <p className="text-base md:text-lg font-extralight">
+
+                            We are on a mission to empower content creators to amplify their voices and reach new heights.
+
+                            Upload your instagram reels, tiktoks and other short form videos into viral Linkedin posts.
+
+                            </p>
                         </div>
                     </motion.div>
                     <motion.div 
@@ -111,11 +120,11 @@ export default function About() {
                         className="flex flex-row-reverse justify-between items-center"
                     >
                         <div className="bg-[rgba(247,199,202,1.0)] rounded-xl pl-[2vw] pr-[2vw] pt-10 pb-10" >
-                            <Image className="w-[25vw]" src={VideoInput} alt="VideoInput Image"/>
+                            <Image className="w-[25vw]" src={themeeno2} alt="VideoInput Image"/>
                         </div>
                         <div className="flex flex-col gap-[1.5vw] w-[30vw]">
-                            <h4 className="text-3xl font-light">Easily inplace your video for transcription</h4>
-                            <p className="text-base md:text-lg font-extralight">Video file can be of any type: MP4, MOV, AVi, WMV, AVCHD, etc . . . </p>
+                            <h4 className="text-3xl font-light">Who are we?</h4>
+                            <p className="text-base md:text-lg font-extralight"> At GhostLink, we are a team driven by authenticity, purpose, and values. We believe in empowering content creators to stay true to their unique voices while amplifying their reach. Our purpose is to revolutionize the way creators transform short-form videos into high-engagement LinkedIn posts, helping them unlock new opportunities and connections. We are guided by a commitment to innovation, collaboration, and excellence. </p>
                         </div>
                     </motion.div>
                     <motion.div 
@@ -126,11 +135,12 @@ export default function About() {
                         className="flex justify-between items-center"
                     >
                         <div className="bg-[rgba(243,240,196,1.0)] rounded-xl pl-[2vw] pr-[2vw] pt-10 pb-10" >
-                            <Image className="w-[25vw]" src={VideoInput} alt="VideoInput Image"/>
+                            <Image className="w-[25vw]" src={waitlist} alt="VideoInput Image"/>
                         </div>
                         <div className="flex flex-col gap-[1.5vw] w-[30vw]">
-                            <h4 className="text-3xl font-light">Easily inplace your video for transcription</h4>
-                            <p className="text-base md:text-lg font-extralight">Video file can be of any type: MP4, MOV, AVi, WMV, AVCHD, etc . . . </p>
+                            <h4 className="text-3xl font-light">Our Product</h4>
+                            <p className="text-base md:text-lg font-extralight"> Our AI technology is designed to preserve the authenticity of creators’ content while delivering best-in-class solutions to help them grow and thrive. At GhostLink, we don’t just build tools—we help creators shape their story and share it with the world. With a passion for purpose-driven work and values that center around growth, authenticity, and persistence, we aim to create meaningful connections between creators and their audiences. Join the waitlist today!
+                            </p>
                         </div>
                     </motion.div>
                 </div>
