@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import {
   useUser,
   SignInButton,
@@ -12,6 +12,8 @@ import {
 
 const Navbar = () => {
   const router = useRouter();
+  const pathname = usePathname()
+
   const { isSignedIn } = useUser();
   const { signOut } = useClerk();
   const { getToken } = useAuth(); // Hook to get the user's auth token
@@ -77,7 +79,7 @@ const Navbar = () => {
         </a>
       </div>
       <div className="navbar-middle">
-          <button className="btn btn-ghost text-white font-medium text-xl" onClick={handleAbout}>About</button>
+          <button className={`btn border-none text-white font-medium text-xl ${pathname === "/about" ? "bg-[rgba(255,255,255,0.1)] border-none rounded-full" : "btn-ghost"}`} onClick={handleAbout}>About</button>
       </div>
 
       <div className="navbar-end flex space-x-2">
